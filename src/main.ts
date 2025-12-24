@@ -17,7 +17,7 @@ function toTitle(name: string) {
 
 const assets = assetFiles.map(f => ({
   id: f.replace(/\.[^/.]+$/, ''),
-  src: `/assets/${f}`,
+  src: `./assets/${f}`,
   name: toTitle(f)
 }))
 
@@ -59,11 +59,11 @@ assets.forEach(asset => {
 // --- Initial Template ---
 function initTemplate() {
   // Background already set by control if changed; add a festive setup
-  
+
   // Tree on left
-  createImageElement('/assets/tree-3.png', 80, 220, 305, 380)
+  createImageElement('./assets/tree-3.png', 80, 220, 305, 380)
   // Snowman on right
-  createImageElement('/assets/snowman.png', 230, 400, 180, 180)
+  createImageElement('./assets/snowman.png', 230, 400, 180, 180)
   // Title text at top
   const title = document.createElement('div')
   title.className = 'canvas-item text-item'
