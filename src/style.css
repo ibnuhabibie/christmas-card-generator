@@ -1,0 +1,338 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Mountains+of+Christmas:wght@400;700&family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500&family=Lobster&family=Pacifico&family=Great+Vibes&family=Merriweather:wght@400;700&family=Raleway:wght@400;700&family=Satisfy&family=Cookie&display=swap');
+
+:root {
+  --bg-dark: #1a2624;
+  --sidebar-bg: #2c3e3b;
+  --accent-gold: #c5a059;
+  --text-light: #f0f4f3;
+  --canvas-bg: #ffffff;
+  --handle-size: 10px;
+  --btn-primary: #2ecc71;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  overflow: hidden;
+}
+
+.app-layout {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 300px;
+  background-color: var(--sidebar-bg);
+  padding: 1.5rem;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  z-index: 10;
+  overflow-y: auto;
+}
+
+.sidebar h2 {
+  color: var(--accent-gold);
+  margin: 0;
+  text-align: center;
+}
+
+.credit {
+  font-size: 0.8rem;
+  color: #b8c7c3;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 1rem;
+}
+
+.assets-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  background: rgba(0,0,0,0.2);
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.asset-item {
+  width: 100%;
+  aspect-ratio: 1;
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+  cursor: grab;
+  transition: transform 0.2s;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.asset-item:hover {
+  transform: scale(1.1);
+  background: rgba(255,255,255,0.2);
+}
+
+/* Controls */
+.controls-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 1.5rem;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.control-group label {
+  font-size: 0.8rem;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.dimension-inputs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dimension-inputs input {
+  width: 100%;
+}
+
+select, input[type="range"], input[type="color"], input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  background: rgba(0,0,0,0.2);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: white;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.btn-group {
+  display: flex;
+  gap: 10px;
+}
+
+.action-btn {
+  background: var(--btn-primary);
+  color: #ffffff;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  width: max-content;
+}
+
+.action-btn.secondary {
+  background: rgba(255,255,255,0.1);
+  color: var(--text-light);
+}
+
+.action-btn:hover {
+  opacity: 0.9;
+}
+
+.delete-btn {
+  background: #d42426;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.delete-btn:disabled {
+  background: #555;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.download-section {
+  margin-top: auto;
+}
+
+.download-btn {
+  width: 100%;
+  background: #2ecc71;
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 1.1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Workspace */
+.workspace {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: 
+    radial-gradient(#2c3e3b 1px, transparent 1px);
+  background-size: 20px 20px;
+  position: relative;
+  overflow: auto;
+  padding: 20px;
+}
+
+.workspace-toolbar {
+  position: absolute;
+  top: 10px;
+  left: auto;
+  display: flex;
+  gap: 10px;
+  z-index: 1001;
+}
+
+.workspace-toolbar .action-btn {
+  padding: 10px;
+  width: 150px;
+}
+
+.workspace-footer {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #b8c7c3;
+  font-size: 0.8rem;
+  background: rgba(0,0,0,0.2);
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.canvas-container {
+  padding: 0;
+  box-shadow: 0 0 50px rgba(0,0,0,0.5);
+  transition: width 0.3s, height 0.3s;
+}
+
+.card-canvas {
+  width: 600px;
+  height: 400px;
+  background: white;
+  position: relative;
+  overflow: hidden;
+  transition: width 0.3s, height 0.3s;
+}
+
+.canvas-bg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #eee;
+  font-size: 2rem;
+  font-weight: bold;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Canvas Items */
+.canvas-item {
+  position: absolute;
+  cursor: grab;
+  user-select: none;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+}
+
+.canvas-item:hover {
+  border: 1px dashed #ccc;
+}
+
+.canvas-item.selected {
+  border: 1px solid var(--accent-gold);
+  z-index: 100;
+}
+
+.text-item {
+  min-width: 50px;
+  min-height: 20px;
+  outline: none;
+  padding: 5px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* Resize Handles */
+.resize-handle {
+  position: absolute;
+  width: var(--handle-size);
+  height: var(--handle-size);
+  background: var(--accent-gold);
+  border: 1px solid #fff;
+  border-radius: 50%;
+  z-index: 101;
+  display: none;
+}
+
+.canvas-item.selected .resize-handle {
+  display: block;
+}
+
+.handle-nw { top: -5px; left: -5px; cursor: nw-resize; }
+.handle-ne { top: -5px; right: -5px; cursor: ne-resize; }
+.handle-sw { bottom: -5px; left: -5px; cursor: sw-resize; }
+.handle-se { bottom: -5px; right: -5px; cursor: se-resize; }
+
+/* Floating Toolbar */
+.floating-toolbar {
+  position: absolute;
+  background: var(--sidebar-bg);
+  padding: 8px;
+  border-radius: 6px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  display: none;
+  flex-direction: row;
+  gap: 8px;
+  z-index: 1000;
+  border: 1px solid var(--accent-gold);
+  align-items: center;
+}
+
+.floating-toolbar select, .floating-toolbar input {
+  font-size: 0.8rem;
+  padding: 4px;
+  width: auto;
+}
+
+.floating-toolbar input[type="color"] {
+  width: 30px;
+  padding: 0;
+  height: 24px;
+}
+
+/* Sidebar specific canvas background input height */
+#canvas-bg-color {
+  height: 40px;
+}
+
+.text-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.mini-delete-btn {
+  background: #d42426;
+  color: white;
+  border: none;
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}

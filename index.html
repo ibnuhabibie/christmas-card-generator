@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Christmas Card Generator</title>
+</head>
+
+<body>
+  <div id="app">
+    <div class="app-layout">
+      <aside class="sidebar">
+        <h2>Christmas Card Generator</h2>
+
+        <div class="control-group">
+          <label>Canvas Size</label>
+          <div class="btn-group">
+            <button id="preset-landscape" class="action-btn secondary">Landscape</button>
+            <button id="preset-portrait" class="action-btn secondary">Portrait</button>
+          </div>
+          <div class="dimension-inputs">
+            <input type="number" id="canvas-width" value="600" min="200" max="1200">
+            <span>x</span>
+            <input type="number" id="canvas-height" value="400" min="200" max="1200">
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label>Canvas Background</label>
+          <input type="color" id="canvas-bg-color" value="#D2EAD0">
+        </div>
+
+        <div class="control-group">
+          <label>Stickers</label>
+          <div class="assets-grid" id="assets-list"></div>
+        </div>
+
+        <!-- Removed Delete Selected and moved Download to toolbar -->
+      </aside>
+
+      <main class="workspace">
+        <div class="workspace-toolbar">
+          <button id="add-text-btn" class="action-btn secondary">Add Text</button>
+          <button id="download-btn" class="action-btn">Download Card</button>
+        </div>
+
+        <div id="floating-toolbar" class="floating-toolbar">
+          <div class="text-controls">
+            <select id="float-font">
+              <option value="'Mountains of Christmas', cursive">Mountains of Christmas</option>
+              <option value="'Roboto', sans-serif">Roboto</option>
+              <option value="'Playfair Display', serif">Playfair Display</option>
+              <option value="'Dancing Script', cursive">Dancing Script</option>
+              <option value="'Lobster', cursive">Lobster</option>
+              <option value="'Pacifico', cursive">Pacifico</option>
+              <option value="'Great Vibes', cursive">Great Vibes</option>
+              <option value="'Merriweather', serif">Merriweather</option>
+              <option value="'Raleway', sans-serif">Raleway</option>
+              <option value="'Satisfy', cursive">Satisfy</option>
+              <option value="'Cookie', cursive">Cookie</option>
+            </select>
+            <input type="color" id="float-color" value="#000000">
+          </div>
+          <button id="float-delete" class="mini-delete-btn" title="Delete">✖</button>
+        </div>
+
+        <div class="canvas-container" spellcheck="false">
+          <div id="card-canvas" class="card-canvas" style="width: 400px; height: 600px; background-color: #D2EAD0;">
+          </div>
+        </div>
+        <div class="workspace-footer">
+          This project is create using TRAE by Ibnu Habibie for Mini Hackaton: Christmas 2025.
+        </div>
+      </main>
+    </div>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>
