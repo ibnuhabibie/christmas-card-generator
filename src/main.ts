@@ -59,9 +59,7 @@ assets.forEach(asset => {
 // --- Initial Template ---
 function initTemplate() {
   // Background already set by control if changed; add a festive setup
-  // Center positions relative to default canvas size
-  const canvasRect = cardCanvas.getBoundingClientRect()
-
+  
   // Tree on left
   createImageElement('/assets/tree-3.png', 80, 220, 305, 380)
   // Snowman on right
